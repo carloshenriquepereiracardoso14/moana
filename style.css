@@ -1,0 +1,384 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+body{
+    background: black;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.banner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    background: url(./img/banner.jpg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.degrade{
+    position: absolute;
+    width: 110%;
+    height: 290px;
+    background: linear-gradient(180deg, rgb(0,0,0,0.2), #1e1e1e, black);
+    filter: blur(10px);
+    bottom: -10%;
+}
+
+.opacidade{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgb(0,0,0,0.3);
+    position: absolute;
+}
+
+.navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: linear-gradient(90deg,rgba(108, 180, 204, 1) 0%, rgba(44, 152, 199, 1) 50%, rgba(36, 126, 237, 1) 100%);
+    position: fixed;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    padding: 10px 30px;
+    top: 20px;
+    left: calc(50% - 150px); 
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+/* Classe ativada ao clicar para recolher */
+.navegacao.recolhido {
+    left: 15px;
+    width: 50px;
+    gap: 0;
+}
+
+/* Esconde os links */
+.navegacao.recolhido a {
+    display: none;
+}
+
+.btn-fechar {
+    background: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #1e1e1e;
+    font-size: 1.2em;
+}
+
+
+.navegacao a{
+    color: #1e1e1e;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+}
+
+.navegacao a::after{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #1e1e1e;
+    bottom: -2px;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.navegacao a:hover::after{
+    width: 100%;
+}
+
+.infos{
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 50px;
+    gap: 1em;
+}
+
+.infos h2{
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+.logos{
+    position: relative;
+}
+
+.disney{
+    width: 70px;
+    height: auto;
+    position: absolute;
+    top: 15px;
+    left: 18%;
+}
+
+.moana{
+    width: 300px;
+    height: auto;
+}
+
+.btn-cont{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.btn-cont img{
+    position: absolute;
+    width: 50px;
+    left: 0;
+    scale: 0.5;
+    z-index: 1;
+    transition: ease 0.4s;
+}
+
+.btn-cont:hover img{
+    scale: 1;
+    transform: translateY(-30px);
+}
+
+.btn{
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    color: #1e1e1e;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border-radius: 30px;
+    z-index: 2;
+}
+
+.btn span{
+    font-size: 2em;
+}
+
+.cartaz-cont{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 40px;
+    background: black;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.cartaz-filme{
+    width: 500px;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.384);
+}
+
+.txt-cont{
+    position: relative;
+}
+
+.txt{
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    z-index: 1000;
+    position: relative;
+}
+
+.txt span, p, h1{
+    color: #ffffff;
+}
+
+.txt span{
+    font-weight: 500;
+}
+
+.txt-cont > .img{
+    position: absolute;
+    width: 150px;
+    z-index: 0;
+    right: 0;
+    top: 40px;
+    opacity: 0;
+    transition: 0.6s ease;
+}
+
+.txt-cont > .ter{
+    right: 0;
+    position: absolute;
+    width: 100px;
+    z-index: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.6s ease;
+}
+
+.txt-cont > .se{
+    top: 0;
+    width: 150px;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    transition: 0.6s ease;
+    opacity: 0;
+}
+
+.txt-cont:hover .se{
+    top: -90px;
+    opacity: 1;
+}
+
+.txt-cont:hover .ter{
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+.txt-cont:hover .img{
+    opacity: 1;
+    top: -40px;
+    right: 30px;
+}
+
+.txt > .boat {
+    position: absolute;
+    bottom: -150px; 
+    right: -200px;
+    width: 100px;
+    animation: moveBoat 10s linear infinite, waveBoat 2s ease-in-out infinite;
+}
+
+/* Movimento horizontal da direita para a esquerda */
+@keyframes moveBoat {
+    0% {
+        right: -200px; /* Fora da tela à direita */
+    }
+    100% {
+        right: 600px; /* Sai da tela à esquerda */
+    }
+}
+
+/* Movimento de sobe e desce (ondas) */
+@keyframes waveBoat {
+    0%, 100% {
+        transform: translateY(0); /* Posição original */
+    }
+    50% {
+        transform: translateY(-20px); /* Sobe */
+    }
+}
+
+.container-trailer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px;
+    height: 100vh;
+}
+
+.container-trailer iframe{
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.384);
+}
+
+@media (max-width:1265px){
+    .cartaz-filme{
+        width: 300px;
+    }
+
+    .txt{
+        width: 400px;
+    }
+}
+
+@media (max-width:830px) {
+    .cartaz-cont{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .container-trailer{
+        padding: 30px;
+    }
+
+    .container-trailer iframe{
+        height: auto;
+    }
+}
+
+@media (max-width:460px){
+    .cartaz-filme{
+        width: 90%;
+    }
+
+    .txt{
+        width: 90%;
+    }
+
+    .container-trailer{
+        padding: 20px;
+    }
+
+    .container-trailer iframe{
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width:400px){
+    .container-trailer iframe{
+        width: 100%;
+        height: 100px;
+    }
+}
+
+@media (max-width:900px) {
+    .container-trailer{
+        padding: 30px;
+    }
+
+    .container-trailer iframe{
+        width: 100%;
+        height: 500px;
+    }
+}
