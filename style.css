@@ -319,6 +319,8 @@ html{
 .container-trailer iframe{
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.384);
+    border: 2px solid transparent;
+    background: linear-gradient(90deg,rgba(108, 180, 204, 1) 0%, rgba(44, 152, 199, 1) 50%, rgba(36, 126, 237, 1) 100%);
 }
 
 @media (max-width:1265px){
